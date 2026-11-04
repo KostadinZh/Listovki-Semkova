@@ -1,0 +1,100 @@
+/* =========================================================
+   layout.css
+   The parts around every page: header, navigation and footer.
+   ========================================================= */
+
+/* ---------- Header ---------- */
+
+.site-header {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  padding-top: .8rem;
+  padding-bottom: .8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 800;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* ---------- Navigation (changes when you are logged in) ---------- */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav a:not(.button) {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a:not(.button):hover {
+  color: var(--primary);
+}
+
+.nav-user {
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: .9rem;
+  padding: .2rem .8rem;
+  border-radius: 99px;
+}
+
+.inline-form {
+  margin: 0;
+}
+
+.link-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.link-button:hover {
+  color: var(--bad);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: .85rem;
+  padding: 1.5rem 0;
+}

@@ -1,0 +1,87 @@
+/* =========================================================
+   base.css
+   Colours and the basic look of every page: text, links, page width.
+   ========================================================= */
+
+/* ---------- Colours ----------
+   blue = main colour, orange = small highlights,
+   green = correct, red = wrong.
+   To change the look of the whole site, change the colours here. */
+:root {
+  /* Main colour (blue) */
+  --primary: #3b5bdb;
+  --primary-dark: #2f4ac0;
+  --primary-soft: #edf2ff;
+
+  /* Highlight colour (orange) */
+  --accent: #ff922b;
+  --accent-soft: #fff4e6;
+  --accent-text: #b55800;
+
+  /* Text, background and lines */
+  --text: #1e293b;
+  --muted: #64748b;
+  --background: #f6f8fc;
+  --card: #ffffff;
+  --line: #e2e8f0;
+
+  /* Correct (green) and wrong (red) */
+  --good: #0f9d70;
+  --good-soft: #e6f8f1;
+  --bad: #e03131;
+  --bad-soft: #ffeded;
+
+  /* Soft shadow used by cards */
+  --shadow: 0 2px 12px rgba(30, 41, 59, 0.07);
+}
+
+/* ---------- Page basics ---------- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--background);
+}
+
+main {
+  flex: 1;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 .5rem;
+  line-height: 1.25;
+}
+
+a {
+  color: var(--primary);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.center {
+  text-align: center;
+}
