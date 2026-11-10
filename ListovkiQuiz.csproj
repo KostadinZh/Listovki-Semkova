@@ -11,4 +11,12 @@
     <Content Update="Data\questions.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- The unit tests live in a sub-folder. Without these lines the web project would try to compile them too. -->
+    <Compile Remove="ListovkiQuiz.Tests\**" />
+    <Content Remove="ListovkiQuiz.Tests\**" />
+    <EmbeddedResource Remove="ListovkiQuiz.Tests\**" />
+    <None Remove="ListovkiQuiz.Tests\**" />
+  </ItemGroup>
+
 </Project>

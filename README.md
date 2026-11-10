@@ -1,6 +1,5 @@
 # Listovki Quiz (ASP.NET Core, Razor Pages)
 
-<<<<<<< HEAD
 A practice driving-theory exam built from `Data/questions.json`.
 
 ## Run
@@ -13,6 +12,17 @@ Then open http://localhost:5000
 - Questions with a video are never used
 - A question gives its points only if exactly the correct answers are ticked
 
+## Short tests
+- `/Quiz?size=5` and `/Quiz?size=10` give 5 or 10 random questions from all topics (sizes are in `ExamRules.ShortTestSizes`)
+- No pass mark; they are saved in a separate "Short tests" table in My attempts and do not change the exam statistics
+
+## Accounts
+- People register with a username and password, then log in (`/Register`, `/Login`)
+- The exam needs a login. Every finished exam is saved and listed on `/History` ("My attempts")
+- Passwords are never stored - only a salted PBKDF2 hash (`Services/Passwords.cs`)
+- Users and attempts are saved in `App_Data/users.json` and `App_Data/attempts.json`.
+  Keep `App_Data/` out of git (add the line `App_Data/` to `.gitignore`).
+
 ## What each file does
 | File | Job |
 |------|-----|
@@ -24,34 +34,15 @@ Then open http://localhost:5000
 | `Pages/Index.cshtml` | Home page |
 | `Pages/Quiz.cshtml` | The exam page (questions, then the result) |
 | `Pages/Quiz.cshtml.cs` | Builds the exam and grades the answers |
+| `Models/AppUser.cs`, `Models/Attempt.cs` | A user, and the result of one exam |
+| `Services/Passwords.cs` | Hashes and checks passwords |
+| `Services/UserStore.cs` | Saves/loads users and attempts (JSON files) |
+| `Services/AuthHelper.cs` | Gives the browser the login cookie |
+| `Pages/Register`, `Login`, `Logout` | Account pages |
+| `Pages/History.cshtml` | The list of past attempts and statistics |
 | `Pages/Shared/_Layout.cshtml` | Header and footer around every page |
 | `wwwroot/css/site.css` | All colours and styling |
 
 ## Pictures
 Put the question pictures in `wwwroot/assets/` (for example `wwwroot/assets/30115.png`).
 `tools/download-assets.ps1` can download them.
-=======
-A fixed practice exam built from `Data/questions.json`.
-
-## Run
-```
-dotnet run
-```
-Then open http://localhost:5000
-
-## The exam
-- 45 questions, worth exactly 97 points, pass mark 87 (see `Models/ExamRules.cs`)
-- Drawn at random from all sections; the user cannot choose the number of questions or the topics
-- Video questions (58) are never used
-- A question only scores if exactly the correct options are ticked
-
-The mix of questions per section and point value is the `Blueprint` table in `Models/ExamRules.cs`.
-The app checks at startup that it adds up to 45 questions / 97 points.
-
-## Pictures
-The JSON only references pictures (`./assets/30115.png`). Put them in `wwwroot/assets/`.
-`tools/download-assets.ps1` downloads the 863 that are needed.
-
-## Checking the data (Development only)
-With `ASPNETCORE_ENVIRONMENT=Development`: `/api/questions?take=5` and `/api/questions/5300` return raw JSON.
->>>>>>> 79ca3d6f10877abfd5f28b0e205050300759377f

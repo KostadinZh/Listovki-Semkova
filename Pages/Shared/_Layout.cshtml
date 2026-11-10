@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="en">
-=======
-<html lang="bg">
->>>>>>> 79ca3d6f10877abfd5f28b0e205050300759377f
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"] - Listovki Quiz</title>
-<<<<<<< HEAD
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
     <header class="site-header">
@@ -19,6 +14,22 @@
                 <span class="logo-mark">B</span>
                 <span class="logo-text">Listovki Quiz</span>
             </a>
+
+            <nav class="nav">
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <a asp-page="/History">My attempts</a>
+                    <span class="nav-user">@(User.Identity?.Name)</span>
+                    <form method="post" asp-page="/Logout" class="inline-form">
+                        <button type="submit" class="link-button">Log out</button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-page="/Login">Log in</a>
+                    <a class="button small" asp-page="/Register">Register</a>
+                }
+            </nav>
         </div>
     </header>
 
@@ -29,18 +40,5 @@
     <footer class="site-footer">
         <div class="container">Listovki Quiz &middot; driving theory practice</div>
     </footer>
-=======
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <header>
-        <nav>
-            <a class="brand" asp-page="/Index">Listovki Quiz</a>
-        </nav>
-    </header>
-    <main>
-        @RenderBody()
-    </main>
->>>>>>> 79ca3d6f10877abfd5f28b0e205050300759377f
 </body>
 </html>

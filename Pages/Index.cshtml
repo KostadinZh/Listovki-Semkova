@@ -2,7 +2,6 @@
 @model IndexModel
 @{ ViewData["Title"] = "Home"; }
 
-<<<<<<< HEAD
 <section class="hero">
     <p class="eyebrow">Category B &middot; theory exam</p>
     <h1>Pass your driving theory exam with confidence</h1>
@@ -10,7 +9,22 @@
         Take a full practice exam with questions from every topic. When you finish,
         you see your score and exactly which answers were right.
     </p>
-    <a class="button big" asp-page="Quiz">Start the exam</a>
+    <div class="hero-actions">
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <a class="button big" asp-page="Quiz">Start the exam</a>
+            <a class="button big secondary" asp-page="History">My attempts</a>
+        }
+        else
+        {
+            <a class="button big" asp-page="Register">Create an account</a>
+            <a class="button big secondary" asp-page="Login">Log in</a>
+        }
+    </div>
+    @if (User.Identity?.IsAuthenticated != true)
+    {
+        <p class="muted hero-note">You need an account so your attempts can be saved.</p>
+    }
 </section>
 
 <section class="stats">
@@ -25,6 +39,20 @@
     <div class="stat">
         <span class="stat-number">@ExamRules.PassPoints</span>
         <span class="stat-label">points to pass</span>
+    </div>
+</section>
+
+<h2 class="section-title">Short tests</h2>
+<section class="card">
+    <p class="short-text">
+        Want to practise a little? Take a short test with a few random questions from all topics.
+        Short tests have no pass mark and are listed separately in My attempts.
+    </p>
+    <div class="hero-actions">
+        @foreach (var size in ExamRules.ShortTestSizes)
+        {
+            <a class="button secondary" asp-page="Quiz" asp-route-size="@size">@size questions</a>
+        }
     </div>
 </section>
 
@@ -49,18 +77,3 @@
 </section>
 
 <p class="muted center">Question bank: @Model.PoolSize questions.</p>
-=======
-<h1>Listovki Quiz</h1>
-
-<section class="card">
-    <h2>The exam</h2>
-    <ul>
-        <li><strong>@Model.QuestionCount</strong> questions, drawn at random from all topics</li>
-        <li>Worth <strong>@Model.TotalPoints</strong> points in total</li>
-        <li>You need at least <strong>@Model.PassPoints</strong> points to pass</li>
-        <li>Each question must be answered completely correctly to earn its points</li>
-    </ul>
-    <p><a class="button" asp-page="Quiz">Start exam</a></p>
-    <p class="muted">Question bank: @Model.PoolSize questions.</p>
-</section>
->>>>>>> 79ca3d6f10877abfd5f28b0e205050300759377f
